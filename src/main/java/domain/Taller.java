@@ -41,4 +41,19 @@ public class Taller {
         System.out.println("Precio final del producto: " + precio + (precio * 0.21));
     }
 
+    public static void ejercicio5() {
+        Utils.info("5 - Bucle WHILE");
+        int numero = 1;
+        while(numero<=100){
+            System.out.println( (numero%2==0) ? numero + " Es par..." : numero + " Es impar...");
+            numero++;
+        }
+    }
+
+    public static void ejercicio6() {
+        Utils.info("6 - Bucle FOR");
+        for (int numero = 1; numero <= 100 ; numero++) {
+            System.out.println( (numero%2==0) ? numero + " Es par..." : numero + " Es impar...");
+        }
+    }
 }
