@@ -1,5 +1,3 @@
-import domain.Taller.*;
-
 import static domain.Taller.*;
 
 public class Main {
@@ -7,5 +5,6 @@ public class Main {
         ejercicio1();
         ejercicio2();
         ejercicio3();
+        ejercicio4();
     }
 }

@@ -30,7 +30,15 @@ public class Taller {
         double radio = Utils.getNumberFromConsole();
         double area = Math.PI * Math.pow(radio, 2);
         System.out.println("El area del circulo = " + area);
+    }
 
+    public static void ejercicio4(){
+        Utils.info("4");
+        System.out.println("Ingrese el precio del producto ");
+        System.out.println("Precio: ");
+        double precio = Utils.getNumberFromConsole();
+        System.out.println("IVA: 21%");
+        System.out.println("Precio final del producto: " + precio + (precio * 0.21));
     }
 
 }
