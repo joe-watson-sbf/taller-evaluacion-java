@@ -125,7 +125,15 @@ public class Taller {
         info("11 - Longitud de esta frase y vocales contiene [ a,e,i,o,u ]");
         showMessage("Ingrese una frase: ");
         String frase = getInputString();
-
+        List<String> vocales = List.of("a","e","i","o","u");
+        String[] letras = frase.split("");
+        int count = 0;
+        for (int i = 0; i < letras.length; i++){
+            String letra = letras[i].trim().toLowerCase();
+            if(vocales.contains(letra)) count++;
+        }
+        showMessage("La longitud de la frase: " + frase.length());
+        showMessage("Tiene " + count + " vocales");
     }
 
     public static void ejercicio12(){
