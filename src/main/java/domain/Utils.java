@@ -1,8 +1,12 @@
 package domain;
 
+import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch;
+
 import javax.swing.*;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
+
 public class Utils {
 
     private static final String title = "SOFKA U - Taller Java";
@@ -32,6 +36,35 @@ public class Utils {
         }
     }
 
+    public static boolean sonIguales(String frase1, String frase2){
+        frase1 = frase1.replaceAll(" ", "").toLowerCase();
+        frase2 = frase2.replaceAll(" ", "").toLowerCase();
+
+        return frase1.equals(frase2);
+    }
+
+    public static void compararFrases(String frase1, String frase2){
+        if(sonIguales(frase1, frase2)){
+            showMessage("Las frases son iguales...");
+        }else {
+            DiffMatchPatch dmp = new DiffMatchPatch();
+            LinkedList<DiffMatchPatch.Diff> diff = dmp.diffMain(frase1, frase2, false);
+            StringBuilder falta = new StringBuilder();
+            StringBuilder igual = new StringBuilder();
+            for (DiffMatchPatch.Diff value : diff) {
+                if (value.operation.name().equals("DELETE")) {
+                    falta.append(" [").append(value.text).append("] ");
+                }
+                if (value.operation.name().equals("EQUAL")) {
+                    igual.append(" [").append(value.text).append("] ");
+                }
+            }
+            showMessage("Lo que falta pa que los dos sean iguales: \n" + falta);
+            showMessage("Los que son iguales: \n" + igual);
+
+        }
+    }
+
     public static String getInputString(){
         Scanner in = new Scanner(System.in);
         return in.nextLine();
@@ -58,7 +91,7 @@ public class Utils {
             method.invoke(Taller.class, null);
             relaunch();
         }catch (Exception ex){
-            showMessage("Ejercio aún no esta implementado!!!");
+            showMessage("\n\nChaooooo!!!\n\n");
         }
     }
 
@@ -73,7 +106,7 @@ public class Utils {
 
         Object selectedValue = JOptionPane.showInputDialog(null,
                 "Seleciona el ejercicio que desea ejecutar\n" +
-                        "Luego ingrese los datos por la consola ",
+                        "Luego ingrese los datos en la consola ",
                 title, JOptionPane.INFORMATION_MESSAGE, null,
                 possibleValues.toArray(), possibleValues.get(0));
 

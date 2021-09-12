@@ -1,4 +1,4 @@
-package domain;
+package domain.persona;
 
 public class Persona {
     private String nombre, DNI;

@@ -1,7 +1,9 @@
 package domain;
 
-import java.util.List;
-import java.util.Random;
+import org.bitbucket.cowwoc.diffmatchpatch.DiffMatchPatch;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static domain.Utils.*;
 import static domain.Utils.showMessage;
@@ -49,9 +51,9 @@ public class Taller {
         info("4 - Aplicar IVA sobre el precio de un producto");
         showMessage("Ingrese el precio del producto:");
         double precio = getInputNumber();
-        showMessage("IVA aplicada: 21%");
         showMessage("Precio normal: " + precio);
-        showMessage("Precio final: " + precio + (precio * 0.21));
+        showMessage("IVA aplicada: 21%");
+        showMessage("Precio final: " + (precio + (precio * 0.21)));
     }
 
     public static void ejercicio5() {
@@ -137,11 +139,19 @@ public class Taller {
     }
 
     public static void ejercicio12(){
-        info("12 - En desarrollo!!!");
+        info("12 - Comparar 2 palabaras");
+        showMessage("Primera frase: ");
+        String frase1 = getInputString().trim();
+        showMessage("Segunda frase: ");
+        String frase2 = getInputString().trim();
+        compararFrases(frase1, frase2);
     }
 
     public static void ejercicio13(){
-        info("13 - En desarrollo!!!");
+        info("13 - Consulta la fecha y hora actual");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss", Locale.ENGLISH);
+        Date date = new Date();
+        showMessage("\nFECHA y HORA: " + dateFormat.format(date));
     }
 
     public static void ejercicio14(){
